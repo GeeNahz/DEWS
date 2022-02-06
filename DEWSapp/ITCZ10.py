@@ -1,6 +1,8 @@
 from .extract import ExtractData
 from .generateData import function_itcz
 
+import time
+
 def itcz10_calcs(month, doc, year):
 
 
@@ -44,16 +46,16 @@ def itcz10_calcs(month, doc, year):
 
     ITCZ10D = ITCZ10D
     ITCZ10J = round(ITCZ10J, 2)
+
     ExtractData('jan', 'DATAitcz10', yr=year).save_value(ITCZ10J)
 
     ITCZ10F = ExtractData('feb', 'DATAitcz10', yr=year).yr_extract()
 
-    if ITCZ10F == None:
+    if ITCZ10F is not None:
+        pass
+    else:
         function_itcz(year=year)
         ITCZ10F = ExtractData('feb', 'DATAitcz10', yr=year).yr_extract()
-        print('feb:',ITCZ10F)
-    else:
-        pass
 
     ITCZ10M = ExtractData('march', 'DATAitcz10', yr=year).yr_extract()
     ITCZ10A = ExtractData('april', 'DATAitcz10', yr=year).yr_extract()

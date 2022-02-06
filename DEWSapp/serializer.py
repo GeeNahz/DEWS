@@ -7,5 +7,7 @@ class TextSerializer(serializers.Serializer):
 
 
 class PredictSerializer(serializers.Serializer):
-    result = serializers.IntegerField(default=4)
-    prediction = serializers.CharField(max_length=100)
+    year = serializers.IntegerField()
+    drought_index = serializers.CharField(max_length=100)
+    ocean_temperature = serializers.CharField(max_length=100)
+    climate_direction = serializers.CharField(max_length=100)

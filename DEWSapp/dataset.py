@@ -1,8 +1,10 @@
 
 class PredictDetails:
-    def __init__(self, result, prediction):
-        self.value = value
-        self.result = result
+    def __init__(self, year, drought_index, oceanTemp, climate_direction):
+        self.year = year
+        self.drought_index = drought_index
+        self.ocean_temperature = oceanTemp
+        self.climate_direction = climate_direction
 
 
 class TextDetails:

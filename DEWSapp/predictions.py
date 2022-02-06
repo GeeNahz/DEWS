@@ -8,7 +8,7 @@ from .generateData import function_itcz, function_sst
 
 # from .ITCZ5 import ExtractDataITCZ5
 
-def predict(month, year):
+def predict(state, month, year):
 
     # auto_populate('DATAitcz10', 'jan', 1988)
     # function_sst(2021)
@@ -34,8 +34,6 @@ def predict(month, year):
 
     itcz10p, nash, litcz10, sumpos10, sumneg10, itczratio, neg10max, pos10max = itcz10_calcs(month, 'PARAitcz10', year)
 
-    drought_index = main_section(oceanTemp, itcz10p, nash, litcz10, sumpos10, sumneg10, itczratio, neg10max, pos10max)
+    drought_index = main_section(oceanTemp, itcz10p, nash, litcz10, sumpos10, sumneg10, itczratio, neg10max, pos10max, state)
 
-    print(drought_index)
-
-    # return drought_index
+    return drought_index, oceanTemp, itcz10p

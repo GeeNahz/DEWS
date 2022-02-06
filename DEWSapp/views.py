@@ -1,7 +1,9 @@
 from django.shortcuts import render
 from django.http import HttpResponse
+import json
 
 from django.views.decorators.csrf import ensure_csrf_cookie
+from rest_framework import status
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from .serializer import TextSerializer, PredictSerializer
@@ -19,15 +21,19 @@ def homepage(request):
 
 @api_view(['GET'])
 def listView(request):
-    details = TextDetails('Godswill', 20)
-    serializer = TextSerializer(details)
+    # details = TextDetails('Godswill', 20)
+    # serializer = TextSerializer(details)
 
     month = 'jan'
-    excel_doc = 'PARAsst'
-    # required values should be the month and the excel document
-    # result, prediction = predict(month, excel_doc, 2018)
-    answer = predict(month, 2025)
-    # print(answer)
+    year = 2027
+    state = 'borno'.upper()
+
+    drought_index, oceanTemp, climate_direction = predict(state, month, year)
+
+    results = PredictDetails(year, drought_index, oceanTemp, climate_direction)
+    serializer = PredictSerializer(results)
+
+    print(state)
 
     return Response(serializer.data)
 
@@ -35,20 +41,23 @@ def listView(request):
 @ensure_csrf_cookie
 @api_view(['GET', 'POST'])
 def predictView(request):
-    if request == 'POST':
-        data = json.loads(request.data)
-
-        month = values['month']
-        year = values['year']
-        # value = values['value'] ==== may not need this since I'll be hard coding its value. Not the best but should work for now ;)
-        excel_doc = values['doc']
-
-        result, prediction = predict(month, excel_doc, year)
-
-        values = PredictDetails(result, prediction)
-        serializer = PredictSerializer(values)
-
-        return Response(serializer.data)
-
-    if request == 'GET':
+    if request.method == 'GET':
         return HttpResponse("<h2>Wanna Predict?</h2><br/><p>Results coming soon to you</p>")
+
+    elif request.method == 'POST':
+        data = json.loads(request.body)
+
+        month = 'jan'
+        state = data['state']
+        year = data['year']
+
+        drought_index, oceanTemp, climate_direction = predict(state, month, year)
+
+        results = PredictDetails(year, drought_index, oceanTemp, climate_direction)
+
+        serializer = PredictSerializer(results)
+
+        # if serializer.is_valid():
+        #     serializer.save()
+        return Response(serializer.data, status=status.HTTP_201_CREATED)
+        # return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
