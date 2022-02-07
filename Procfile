@@ -1,1 +1,1 @@
-web: gunicorn DEWSproject.wsgi
+web: gunicorn DEWSproject.wsgi --log-file -
