@@ -22,8 +22,11 @@ environ.Env.read_env(env_file=os.path.join(BASE_DIR, '.env'))
 SECRET_KEY = os.environ.get('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
+# DEBUG = True
 DEBUG = os.environ.get('DEBUG')
 
+
+# ALLOWED_HOSTS = ['dewsapp.herokuapp.com', '127.0.0.1']
 ALLOWED_HOSTS = ['*']
 
 
@@ -56,6 +59,7 @@ MIDDLEWARE = [
 ]
 
 CORS_ALLOW_ALL_ORIGINS = True
+CORS_ALLOW_CREDENTIALS = True
 
 CORS_ALLOW_METHODS = [
     "DELETE",
@@ -64,6 +68,10 @@ CORS_ALLOW_METHODS = [
     "PATCH",
     "POST",
     "PUT",
+]
+
+CSRF_TRUSTED_ORIGINS = [
+    "dewsapp.herokuapp.com",
 ]
 
 ROOT_URLCONF = 'DEWSproject.urls'

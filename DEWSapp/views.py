@@ -48,7 +48,7 @@ def predictView(request):
         data = json.loads(request.body)
 
         month = 'jan'
-        state = data['state']
+        state = data['state'].upper()
         year = data['year']
 
         drought_index, oceanTemp, climate_direction = predict(state, month, year)
