@@ -1,4 +1,9 @@
 import openpyxl as xl
+import os
+from django.conf import settings
+
+
+
 
 class ExtractData:
     def __init__(self, month, xlsx_file, value=None, yr=None):
@@ -28,7 +33,9 @@ class ExtractData:
             "dec": 13,
         }
 
-        self.wb = xl.load_workbook(f'DEWSapp\dewsdocs\{self.xlsx_file}.xlsx') # load a worksheet to the environment
+        filename = os.path.join(settings.BASE_DIR, 'DEWSapp', 'dewsdocs', f'{self.xlsx_file}.xlsx')
+
+        self.wb = xl.load_workbook(filename) # load a worksheet to the environment
         self.sheet = self.wb['Sheet1'] # specifies the sheet in the worksheet to use
 
 

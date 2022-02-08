@@ -12,7 +12,7 @@ def predict(state, month, year):
 
     # auto_populate('DATAitcz10', 'jan', 1988)
     # function_sst(2021)
-    # function_itcz(2021)
+    # function_itcz(2031)
 
     # ===== SST ===== #
     oceanTemp = sst_calcs(month, 'PARAsst', year)

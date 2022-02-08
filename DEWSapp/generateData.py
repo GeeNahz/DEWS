@@ -5,33 +5,33 @@ from .extract import ExtractData
 
 counter = 0
 
-def function_itcz(year, cnt=1):
-
-    months = ['jan', 'feb', 'march',
-    'april', 'may', 'june',
-    'july', 'aug', 'sept',
-    'oct', 'nov', 'dec']
-
-    global counter
-
-    while counter < 11:
-        mean_1 = ExtractData(months[cnt], 'PARAitcz10', value='mean').value_extract()
-        mean_0 = ExtractData(months[cnt-1], 'PARAitcz10', value='mean').value_extract()
-        b_0 = ExtractData(months[cnt-1], 'PARAitcz10', value='b').value_extract()
-        rv_1 = ExtractData(months[cnt], 'DATArvITCZ10-1', yr=year).yr_extract()
-        s_1 = ExtractData(months[cnt], 'PARAitcz10', value='s').value_extract()
-        ITCZ_0 = ExtractData(months[cnt-1], 'DATAitcz10', yr=year-1).yr_extract()
-        r_0 = ExtractData(months[cnt-1], 'PARAitcz10', value='r').value_extract()
-
-        ITCZ_1 = mean_1+b_0*(ITCZ_0-mean_0)+rv_1*s_1*((1-(r_0)**2)**0.5)
-
-        ITCZ_1 = round(ITCZ_1, 2)
-
-        ExtractData(months[cnt], 'DATAitcz10', yr=year).save_value(ITCZ_1)
-
-        counter+=1
-
-        function_itcz(year, cnt+1)
+# def function_itcz(year, cnt=1):
+#
+#     months = ['jan', 'feb', 'march',
+#     'april', 'may', 'june',
+#     'july', 'aug', 'sept',
+#     'oct', 'nov', 'dec']
+#
+#     global counter
+#
+#     while counter < 11:
+#         mean_1 = ExtractData(months[cnt], 'PARAitcz10', value='mean').value_extract()
+#         mean_0 = ExtractData(months[cnt-1], 'PARAitcz10', value='mean').value_extract()
+#         b_0 = ExtractData(months[cnt-1], 'PARAitcz10', value='b').value_extract()
+#         rv_1 = ExtractData(months[cnt], 'DATArvITCZ10-1', yr=year).yr_extract()
+#         s_1 = ExtractData(months[cnt], 'PARAitcz10', value='s').value_extract()
+#         ITCZ_0 = ExtractData(months[cnt-1], 'DATAitcz10', yr=year-1).yr_extract()
+#         r_0 = ExtractData(months[cnt-1], 'PARAitcz10', value='r').value_extract()
+#
+#         ITCZ_1 = mean_1+b_0*(ITCZ_0-mean_0)+rv_1*s_1*((1-(r_0)**2)**0.5)
+#
+#         ITCZ_1 = round(ITCZ_1, 2)
+#
+#         ExtractData(months[cnt], 'DATAitcz10', yr=year).save_value(ITCZ_1)
+#
+#         counter+=1
+#
+#         function_itcz(year, cnt+1)
 
 
 def function_sst(year, cnt=1):
@@ -64,6 +64,36 @@ def function_sst(year, cnt=1):
 
 
 
+def function_itcz(year, cnt=1):
+
+    months = ['jan', 'feb', 'march',
+    'april', 'may', 'june',
+    'july', 'aug', 'sept',
+    'oct', 'nov', 'dec']
+
+    global counter
+
+    print("ITCZ function started...")
+
+    while counter < 11:
+        mean_1 = ExtractData(months[cnt], 'PARAitcz10', value='mean').value_extract()
+        mean_0 = ExtractData(months[cnt-1], 'PARAitcz10', value='mean').value_extract()
+        b_0 = ExtractData(months[cnt-1], 'PARAitcz10', value='b').value_extract()
+        rv_1 = ExtractData(months[cnt], 'DATArvITCZ10-1', yr=year).yr_extract()
+        s_1 = ExtractData(months[cnt], 'PARAitcz10', value='s').value_extract()
+        SST_0 = ExtractData(months[cnt-1], 'DATAitcz10', yr=year-1).yr_extract()
+        r_0 = ExtractData(months[cnt-1], 'PARAitcz10', value='r').value_extract()
+
+        SST_1 = mean_1+b_0*(SST_0-mean_0)+rv_1*s_1*((1-(r_0)**2)**0.5)
+
+        SST_1 = round(SST_1, 2)
+
+        ExtractData(months[cnt], 'DATAitcz10', yr=year).save_value(SST_1)
+
+        counter+=1
+
+        function_itcz(year, cnt+1)
+    print("ITCZ function ended...")
 
 
 

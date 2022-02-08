@@ -24,18 +24,23 @@ def listView(request):
     # details = TextDetails('Godswill', 20)
     # serializer = TextSerializer(details)
 
-    month = 'jan'
-    year = 2027
-    state = 'borno'.upper()
+    if request.method == 'GET':
 
-    drought_index, oceanTemp, climate_direction = predict(state, month, year)
+        month = 'jan'
+        year = 2029
+        state = 'borno'.upper()
 
-    results = PredictDetails(year, drought_index, oceanTemp, climate_direction)
-    serializer = PredictSerializer(results)
+        # drought_index, oceanTemp, climate_direction = predict(state, month, year)
 
-    print(state)
+        predict(state, month, year)
 
-    return Response(serializer.data)
+        # results = PredictDetails(year, drought_index, oceanTemp, climate_direction)
+        # serializer = PredictSerializer(results)
+
+        # return Response(serializer.data)
+        return HttpResponse("Home page?")
+
+
 
 
 @ensure_csrf_cookie
