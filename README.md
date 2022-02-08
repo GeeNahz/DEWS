@@ -8,7 +8,7 @@ Supported request Methods: GET --> returns only an HttpResponse with the text "H
                            
 POST --> returns the Year, Drought index (which is the true prediction), Ocean temperature(SST) and Climate direction(ITCZ).
 
-receives an object with year and month as the keys of the form {year: <year_value>, month: <month_value>}.
+receives an object with year and month as the keys of the form {year: <year_value>, state: <state_value>}.
 
 For accessing the return object, you should use:
 
