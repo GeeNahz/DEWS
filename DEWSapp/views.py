@@ -30,15 +30,15 @@ def listView(request):
         year = 2029
         state = 'borno'.upper()
 
-        # drought_index, oceanTemp, climate_direction = predict(state, month, year)
+        drought_index, oceanTemp, climate_direction = predict(state, month, year)
 
-        predict(state, month, year)
+        # predict(state, month, year)
 
-        # results = PredictDetails(year, drought_index, oceanTemp, climate_direction)
-        # serializer = PredictSerializer(results)
+        results = PredictDetails(year, drought_index, oceanTemp, climate_direction)
+        serializer = PredictSerializer(results)
 
-        # return Response(serializer.data)
-        return HttpResponse("Home page?")
+        return Response(serializer.data)
+        # return HttpResponse("Home page?")
 
 
 
@@ -61,6 +61,8 @@ def predictView(request):
         results = PredictDetails(year, drought_index, oceanTemp, climate_direction)
 
         serializer = PredictSerializer(results)
+
+        print(serializer.data)
 
         # if serializer.is_valid():
         #     serializer.save()
