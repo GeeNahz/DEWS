@@ -47,14 +47,14 @@ def listView(request):
 @api_view(['GET', 'POST'])
 def predictView(request):
     if request.method == 'GET':
-        return HttpResponse("<h2>Wanna Predict?</h2><br/><p>Results coming soon to you</p>")
+        return HttpResponse("<h1>Want to Predict? Here's how:</h1><br/><p>Make a POST request making the body of the request to have the object format as follows:</p><br/><p>{<br/>&nbsp;&nbsp;&nbsp;'year':&nbsp;year_value,<br/>&nbsp;&nbsp;&nbsp;'state':&nbsp;state_value<br/>}</p>")
 
     elif request.method == 'POST':
         data = json.loads(request.body)
 
         month = 'jan'
         state = data['state'].upper()
-        year = data['year']
+        year = int(data['year'])
 
         drought_index, oceanTemp, climate_direction = predict(state, month, year)
 

@@ -24,23 +24,23 @@ def main_section(oceanT, itcz10p, nash, litcz10, sumpos10, sumneg10, itczratio, 
             drought_index = 'NO DROUGHT'
             return drought_index
 
-        if (oceanT == 'VERY WARM' and itcz10p == 'EXTREME NORTH' and nash < 0.85):
+        elif (oceanT == 'VERY WARM' and itcz10p == 'EXTREME NORTH' and nash < 0.85):
             drought_index = 'MODERATE DROUGHT'
             return drought_index
 
-        if (oceanT == 'VERY WARM') and (itcz10p == 'EXTREME SOUTH') and (nash >= 0.85) and (litcz10 == 12) and (3 <= sumpos10 < 4):
+        elif (oceanT == 'VERY WARM') and (itcz10p == 'EXTREME SOUTH') and (nash >= 0.85) and (litcz10 == 12) and (3 <= sumpos10 < 4):
             drought_index = 'SEVERE DROUGHT'
             return drought_index
 
-        if (oceanT == 'VERY WARM' and itcz10p == 'EXTREME SOUTH' and nash >= 0.85 and litcz10 == 12 and sumpos10 >= 4):
+        elif (oceanT == 'VERY WARM' and itcz10p == 'EXTREME SOUTH' and nash >= 0.85 and litcz10 == 12 and sumpos10 >= 4):
             drought_index = 'MILD DROUGHT'
             return drought_index
 
-        if (oceanT == 'VERY WARM' and itcz10p == 'EXTREME SOUTH' and nash >= 0.85 and litcz10 is not 12):
+        elif (oceanT == 'VERY WARM' and itcz10p == 'EXTREME SOUTH' and nash >= 0.85 and litcz10 is not 12):
             drought_index = 'NO DROUGHT'
             return drought_index
 
-        if (oceanT == 'WARM' and itcz10p == 'EXTREME SOUTH'):
+        elif (oceanT == 'WARM' and itcz10p == 'EXTREME SOUTH'):
             drought_index = 'NO DROUGHT'
             return drought_index
 
@@ -134,105 +134,105 @@ def main_section(oceanT, itcz10p, nash, litcz10, sumpos10, sumneg10, itczratio, 
             drought_index = 'NO DROUGHT'
             return drought_index
 
-        if (oceanT == 'AVERAGE' and itcz10p == 'EXTREME SOUTH' and litcz10 == 12):
+        elif (oceanT == 'AVERAGE' and itcz10p == 'EXTREME SOUTH' and litcz10 == 12):
             drought_index = 'MODERATE DROUGHT'
             return drought_index
 
-        if (oceanT == 'AVERAGE' and itcz10p == 'EXTREME SOUTH' and litcz10 is not 12):
+        elif (oceanT == 'AVERAGE' and itcz10p == 'EXTREME SOUTH' and litcz10 is not 12):
             drought_index = 'NO DROUGHT'
             return drought_index
 
-        if (oceanT == 'AVERAGE' and itcz10p == 'NORMAL' and nash < 0.85):
+        elif (oceanT == 'AVERAGE' and itcz10p == 'NORMAL' and nash < 0.85):
             drought_index = 'MODERATE DROUGHT'
             return drought_index
 
-        if (oceanT == 'AVERAGE' and itcz10p == 'NORMAL' and nash >= 0.85):
+        elif (oceanT == 'AVERAGE' and itcz10p == 'NORMAL' and nash >= 0.85):
             drought_index = 'NO DROUGHT'
             return drought_index
 
-        if (oceanT == 'COLD') and (itcz10p == 'NORMAL' or itcz10p == 'EXTREME SOUTH'):
+        elif (oceanT == 'COLD') and (itcz10p == 'NORMAL' or itcz10p == 'EXTREME SOUTH'):
             drought_index = 'NO DROUGHT'
             return drought_index
 
-        if (oceanT == 'WARM' and itcz10p == 'EXTREME SOUTH' and nash >= 0.85):
+        elif (oceanT == 'WARM' and itcz10p == 'EXTREME SOUTH' and nash >= 0.85):
             drought_index = 'MILD DROUGHT'
             return drought_index
 
-        if (oceanT == 'WARM' and itcz10p == 'EXTREME SOUTH' and nash < 0.85):
+        elif (oceanT == 'WARM' and itcz10p == 'EXTREME SOUTH' and nash < 0.85):
             drought_index = 'NO DROUGHT'
             return drought_index
 
-        if (oceanT == 'VERY WARM' and itcz10p == 'EXTREME NORTH' and nash >= 0.85):
+        elif (oceanT == 'VERY WARM' and itcz10p == 'EXTREME NORTH' and nash >= 0.85):
             drought_index = 'MODERATE DROUGHT'
             return drought_index
 
-        if (oceanT == 'VERY WARM' and itcz10p == 'EXTREME NORTH' and nash < 0.85):
+        elif (oceanT == 'VERY WARM' and itcz10p == 'EXTREME NORTH' and nash < 0.85):
             drought_index = 'NO DROUGHT'
             return drought_index
 
-        if (oceanT == 'VERY WARM' and itcz10p == 'SEVERE SOUTH' and itczratio < 0.7):
+        elif (oceanT == 'VERY WARM' and itcz10p == 'SEVERE SOUTH' and itczratio < 0.7):
             drought_index = 'MODERATE DROUGHT'
             return drought_index
 
-        if (oceanT == 'VERY WARM' and itcz10p == 'SEVERE SOUTH' and itczratio > 0.7):
+        elif (oceanT == 'VERY WARM' and itcz10p == 'SEVERE SOUTH' and itczratio > 0.7):
             drought_index = 'SEVERE DROUGHT'
             return drought_index
 
-        if (oceanT == 'VERY WARM' and itcz10p == 'NORMAL' and sumneg10 < 0.6):
+        elif (oceanT == 'VERY WARM' and itcz10p == 'NORMAL' and sumneg10 < 0.6):
             drought_index = 'NO DROUGHT'
             return drought_index
 
-        if (oceanT == 'VERY WARM' and itcz10p == 'NORMAL' and sumneg10 > 0.6 and itczratio < 10):
+        elif (oceanT == 'VERY WARM' and itcz10p == 'NORMAL' and sumneg10 > 0.6 and itczratio < 10):
             drought_index = 'MILD DROUGHT'
             return drought_index
 
-        if (oceanT == 'VERY WARM' and itcz10p == 'NORMAL' and sumneg10 > 0.6 and itczratio > 10):
+        elif (oceanT == 'VERY WARM' and itcz10p == 'NORMAL' and sumneg10 > 0.6 and itczratio > 10):
             drought_index = 'MODERATE DROUGHTC'
             return drought_index
 
-        if (oceanT == 'VERY WARM' and itcz10p == 'MODERATE SOUTH' and pos10max > 1 and itczratio > 1):
+        elif (oceanT == 'VERY WARM' and itcz10p == 'MODERATE SOUTH' and pos10max > 1 and itczratio > 1):
             drought_index = 'NO DROUGHT'
             return drought_index
 
-        if (oceanT == 'VERY WARM' and itcz10p == 'MODERATE SOUTH' and pos10max < 1 and itczratio < 0):
+        elif (oceanT == 'VERY WARM' and itcz10p == 'MODERATE SOUTH' and pos10max < 1 and itczratio < 0):
             drought_index = 'MILD DROUGHT'
             return drought_index
 
-        if (oceanT == 'VERY WARM' and itcz10p == 'EXTREME SOUTH' and nash < 0.85):
+        elif (oceanT == 'VERY WARM' and itcz10p == 'EXTREME SOUTH' and nash < 0.85):
             drought_index = 'NO DROUGHT'
             return drought_index
 
-        if (oceanT == 'VERY WARM' and itcz10p == 'EXTREME SOUTH' and (0.75 <= nash < 0.85) and sumneg10 < 14):
+        elif (oceanT == 'VERY WARM' and itcz10p == 'EXTREME SOUTH' and (0.75 <= nash < 0.85) and sumneg10 < 14):
             drought_index = 'NO DROUGHT'
             return drought_index
 
-        if (oceanT == 'VERY WARM' and itcz10p == 'EXTREME SOUTH' and (0.75 <= nash <0.85) and sumneg10 > 14):
+        elif (oceanT == 'VERY WARM' and itcz10p == 'EXTREME SOUTH' and (0.75 <= nash <0.85) and sumneg10 > 14):
             drought_index = 'MILD DROUGHT'
             return drought_index
 
-        if (oceanT == 'VERY WARM' and itcz10p == 'EXTREME SOUTH' and nash >= 0.85 and litcz10 == 12 and neg10max > 5):
+        elif (oceanT == 'VERY WARM' and itcz10p == 'EXTREME SOUTH' and nash >= 0.85 and litcz10 == 12 and neg10max > 5):
             drought_index = 'NO DROUGHT'
             return drought_index
 
-        if (oceanT == 'VERY WARM' and itcz10p == 'EXTREME SOUTH' and nash >= 0.85 and litcz10 == 12 and neg10max < 3.8):
+        elif (oceanT == 'VERY WARM' and itcz10p == 'EXTREME SOUTH' and nash >= 0.85 and litcz10 == 12 and neg10max < 3.8):
             drought_index = 'MODERATE DROUGHT'
             return drought_index
 
-        if (oceanT == 'VERY WARM' and itcz10p == 'EXTREME SOUTH' and nash >= 0.85 and litcz10 == 12 and (3.8 < neg10max < 5)):
+        elif (oceanT == 'VERY WARM' and itcz10p == 'EXTREME SOUTH' and nash >= 0.85 and litcz10 == 12 and (3.8 < neg10max < 5)):
             drought_index = 'MILD DROUGHT'
             return drought_index
 
-        if (oceanT == 'VERY WARM' and itcz10p == 'EXTREME SOUTH' and nash > 0.85 and sumneg10 > 13):
+        elif (oceanT == 'VERY WARM' and itcz10p == 'EXTREME SOUTH' and nash > 0.85 and sumneg10 > 13):
             drought_index = 'MODERATE DROUGHT'
             return drought_index
 
-        if (oceanT == 'VERY WARM' and itcz10p == 'EXTREME SOUTH' and nash >= 0.85 and sumneg10 < 13):
+        elif (oceanT == 'VERY WARM' and itcz10p == 'EXTREME SOUTH' and nash >= 0.85 and sumneg10 < 13):
             drought_index = 'NO DROUGHT'
             return drought_index
 
 
     # for southern guinea
-    elif state == 'NASSARAWA' or 'KWARA' or 'NIGER' or 'TARABA' or 'BENUE' or 'FCT':
+    elif state == 'NASSARAWA' or 'KWARA' or 'NIGER' or 'TARABA' or 'BENUE' or 'FCT' or 'KOGI':
         if (oceanT == 'AVERAGE' and itcz10p == 'MODERATE SOUTH'):
             drought_index = 'NO DROUGHT'
             return drought_index
