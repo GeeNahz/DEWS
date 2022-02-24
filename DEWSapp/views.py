@@ -110,9 +110,6 @@ def speiView(request):
 
         index, region = spei_predict(month, lga, year)
 
-        print("Index:", index)
-        print("Region:", region)
-
         result = SpeiDetails(year, index, region)
         serializer = SpeiSerializer(result)
 
