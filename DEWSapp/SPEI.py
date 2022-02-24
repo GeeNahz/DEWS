@@ -1,0 +1,102 @@
+from .extract import ExtractData
+from .generateData import function_spei
+
+# import time
+
+def spei_calcs(month, dataDoc, doc, year, rvDoc):
+
+
+    mean_Jan_c = ExtractData('jan', doc, value='mean')
+    mean_Jan = mean_Jan_c.value_extract()
+
+    mean_Dec_c = ExtractData('dec', doc, value='mean')
+    mean_Dec = mean_Dec_c.value_extract()
+
+    b_Dec_c = ExtractData('jan', doc, 'b')
+    b_Dec = b_Dec_c.value_extract()
+
+    SPEID_C = ExtractData('dec', dataDoc, yr=year-1)
+    SPEID = SPEID_C.yr_extract()
+
+    rv_Jan_c = ExtractData('jan', rvDoc, yr=year)
+    rv_Jan = rv_Jan_c.yr_extract()
+
+    s_Jan_c = ExtractData('jan', doc, value='s')
+    s_Jan = s_Jan_c.value_extract()
+
+    r_Dec_c = ExtractData('jan', doc, value='r')
+    r_Dec = r_Dec_c.value_extract()
+
+    SPEIJ = mean_Jan+b_Dec*(SPEID-mean_Dec)+rv_Jan*s_Jan*((1-(r_Dec)**2)**0.5)
+
+    SPEID = SPEID
+    SPEIJ = round(SPEIJ, 2)
+
+    ExtractData('jan', dataDoc, yr=year).save_value(SPEIJ)
+
+    SPEIF = ExtractData('feb', dataDoc, yr=year).yr_extract()
+
+    if SPEIF is not None:
+        pass
+    else:
+        function_spei(dataDoc, doc, rvDoc, year=year)
+        SPEIF = ExtractData('feb', dataDoc, yr=year).yr_extract()
+
+    SPEIM = ExtractData('march', dataDoc, yr=year).yr_extract()
+    SPEIA = ExtractData('april', dataDoc, yr=year).yr_extract()
+    SPEIMY = ExtractData('may', dataDoc, yr=year).yr_extract()
+    SPEIJN = ExtractData('june', dataDoc, yr=year).yr_extract()
+    SPEIJY = ExtractData('july', dataDoc, yr=year).yr_extract()
+    SPEIAG = ExtractData('aug', dataDoc, yr=year).yr_extract()
+    SPEIS = ExtractData('sept', dataDoc, yr=year).yr_extract()
+    SPEIO = ExtractData('oct', dataDoc, yr=year).yr_extract()
+    SPEIN = ExtractData('nov', dataDoc, yr=year).yr_extract()
+    SPEIDE = ExtractData('dec', dataDoc, yr=year).yr_extract()
+
+    spei = ''
+
+    if month == 'jan':
+      spei = SPEIJ
+    elif month == 'feb':
+      spei = SPEIF
+    elif month == 'march':
+      spei = SPEIM
+    elif month == 'april':
+      spei = SPEIA
+    elif month == 'may':
+      spei = SPEIM
+    elif month == 'june':
+      spei = SPEIJN
+    elif month == 'july':
+      spei = SPEIJY
+    elif month == 'aug':
+      spei = SPEIAG
+    elif month == 'sept':
+      spei = SPEIS
+    elif month == 'oct':
+      spei = SPEIO
+    elif month == 'nov':
+      spei = SPEIN
+    elif month == 'dec':
+      spei = SPEIDE
+
+
+    # === prediction === #
+
+    spei_index = ''
+
+    if spei > -0.5:
+      spei_index = 'no drought'
+    elif -0.5 >= spei > -1:
+      spei_index = 'mild drought'
+    elif -1 >= spei > -1.5:
+      spei_index = 'moderate drought'
+    elif -1.5 >= spei > -2:
+      spei_index = 'severe drought'
+    elif spei < -2:
+      spei_index = 'extreme drought'
+    else:
+      spei_index = 'invalid parameter'
+
+
+    return spei_index.upper()

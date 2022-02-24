@@ -11,3 +11,9 @@ class PredictSerializer(serializers.Serializer):
     drought_index = serializers.CharField(max_length=100)
     ocean_temperature = serializers.CharField(max_length=100)
     climate_direction = serializers.CharField(max_length=100)
+
+
+class SpeiSerializer(serializers.Serializer):
+    year = serializers.IntegerField()
+    spei_drought_index = serializers.CharField(max_length=100)
+    region = serializers.CharField(max_length=100)

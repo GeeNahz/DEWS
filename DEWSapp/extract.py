@@ -72,3 +72,16 @@ class ExtractData:
                 self.sheet.cell(row, month_col).value = data
             row+=1
         self.wb.save(f'DEWSapp\dewsdocs\{self.xlsx_file}.xlsx')
+
+    def region_synoptic(self, lga):
+        row = 3
+        col = 2
+        # month = self.month_select[self.month]
+        while row <= self.sheet.max_row:
+            cell = self.sheet.cell(row, col)
+            if cell.value.upper() == lga:
+                region_val = self.sheet.cell(row, col+3).value
+                synopsis_val = self.sheet.cell(row, col+4).value
+                return region_val, synopsis_val
+            row+=1
+        return "Nothing found. Please ensure that a valid date was used", "Nothing here as well"
