@@ -53,50 +53,57 @@ def spei_calcs(month, dataDoc, doc, year, rvDoc):
     SPEIN = ExtractData('nov', dataDoc, yr=year).yr_extract()
     SPEIDE = ExtractData('dec', dataDoc, yr=year).yr_extract()
 
-    spei = ''
+    """
+    === what i need to do ===
+    All done!
+    """
 
-    if month == 'jan':
-      spei = SPEIJ
-    elif month == 'feb':
-      spei = SPEIF
-    elif month == 'march':
-      spei = SPEIM
-    elif month == 'april':
-      spei = SPEIA
-    elif month == 'may':
-      spei = SPEIM
-    elif month == 'june':
-      spei = SPEIJN
-    elif month == 'july':
-      spei = SPEIJY
-    elif month == 'aug':
-      spei = SPEIAG
-    elif month == 'sept':
-      spei = SPEIS
-    elif month == 'oct':
-      spei = SPEIO
-    elif month == 'nov':
-      spei = SPEIN
-    elif month == 'dec':
-      spei = SPEIDE
+    # spei = ''
+    #
+    # if month == 'jan':
+    #   spei = SPEIJ
+    # elif month == 'feb':
+    #   spei = SPEIF
+    # elif month == 'march':
+    #   spei = SPEIM
+    # elif month == 'april':
+    #   spei = SPEIA
+    # elif month == 'may':
+    #   spei = SPEIM
+    # elif month == 'june':
+    #   spei = SPEIJN
+    # elif month == 'july':
+    #   spei = SPEIJY
+    # elif month == 'aug':
+    #   spei = SPEIAG
+    # elif month == 'sept':
+    #   spei = SPEIS
+    # elif month == 'oct':
+    #   spei = SPEIO
+    # elif month == 'nov':
+    #   spei = SPEIN
+    # elif month == 'dec':
+    #   spei = SPEIDE
 
 
     # === prediction === #
 
-    spei_index = ''
+    list = [SPEIA, SPEIM, SPEIJN, SPEIJY, SPEIAG, SPEIS, SPEIO]
 
-    if spei > -0.5:
-      spei_index = 'no drought'
-    elif -0.5 >= spei > -1:
-      spei_index = 'mild drought'
-    elif -1 >= spei > -1.5:
-      spei_index = 'moderate drought'
-    elif -1.5 >= spei > -2:
-      spei_index = 'severe drought'
-    elif spei < -2:
-      spei_index = 'extreme drought'
-    else:
-      spei_index = 'invalid parameter'
+    # spei_index = ''
 
+    for i, spei in enumerate(list):
+        if spei > -0.5:
+          list[i] = 'no drought'
+        elif -0.5 >= spei > -1:
+          list[i] = 'mild drought'
+        elif -1 >= spei > -1.5:
+          list[i] = 'moderate drought'
+        elif -1.5 >= spei > -2:
+          list[i] = 'severe drought'
+        elif spei < -2:
+          list[i] = 'extreme drought'
+        else:
+          list[i] = 'invalid parameter'
 
-    return spei_index.upper()
+    return list[0], list[1], list[2], list[3], list[4], list[5], list[6]

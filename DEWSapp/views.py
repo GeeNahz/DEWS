@@ -44,62 +44,60 @@ def listView(request):
 @ensure_csrf_cookie
 @api_view(['GET', 'POST'])
 def predictView(request):
-    if request.method == 'GET':
-        return HttpResponse("<h1>Want to Predict? Here's how:</h1><br/><p>Make a POST request making the body of the request to have the object format as follows:</p><br/><p>{<br/>&nbsp;&nbsp;&nbsp;'year':&nbsp;year_value,<br/>&nbsp;&nbsp;&nbsp;'state':&nbsp;state_value<br/>}</p>")
+    if request.method == 'POST':
+        # dictionary of months
+        # months = {
+        #     "january": "jan",
+        #     "february": "feb",
+        #     "march": "march",
+        #     "april": "april",
+        #     "may": "may",
+        #     "june": "june",
+        #     "july": "july",
+        #     "august": "aug",
+        #     "september": "sept",
+        #     "october": "oct",
+        #     "november": "nov",
+        #     "december": "dec",
+        # }
 
-    elif request.method == 'POST':
+        # data from request
         data = json.loads(request.body)
 
-        month = 'jan'
+        # individual data
+        # month_from_request = data['month'].lower()
         state = data['state'].upper()
         year = int(data['year'])
+        lga = data['lga'].upper()
 
-        drought_index, oceanTemp, climate_direction = predict(state, month, year)
+        # month = months[month_from_request]
 
-        results = PredictDetails(year, drought_index, oceanTemp, climate_direction)
+        # calculations and prediction
+        drought_index, oceanTemp, climate_direction = predict(state, year)
+        SPEIA, SPEIM, SPEIJN, SPEIJY, SPEIAG, SPEIS, SPEIO, region = spei_predict(lga, year)
 
+        # prepare the return values to be serialized
+        results = PredictDetails(year, drought_index, oceanTemp, climate_direction, SPEIA, SPEIM, SPEIJN, SPEIJY, SPEIAG, SPEIS, SPEIO, region)
+
+        # serializer the results
         serializer = PredictSerializer(results)
 
-        print(serializer.data)
-
-        # if serializer.is_valid():
-        #     serializer.save()
         return Response(serializer.data, status=status.HTTP_201_CREATED)
         # return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+    return HttpResponse("<h1>Want to Predict? Here's how:</h1><br/><p>Make a POST request making the body of the request to have the object format as follows:</p><br/><p>{<br/>&nbsp;&nbsp;&nbsp;'year':&nbsp;year_value,<br/>&nbsp;&nbsp;&nbsp;'state':&nbsp;state_value<br/>}</p>")
 
 
 @ensure_csrf_cookie
 @api_view(['GET', 'POST'])
 def speiView(request):
-    
-    month = 'nov'
-    year = 2031
-    # lga = 'Binji'.upper() # 1
-    # lga = 'Gada'.upper() # 2
-    # lga = 'Abadam'.upper() # 3
 
-    lga = 'matazu'.upper() # 4 ====== does not calc for all the months
+    month = 'dec'
+    year = 2025
+    lga = 'Guma'.upper() # 19
 
-    # lga = 'Gusau'.upper() # 5
-    # lga = 'Bama'.upper() # 6
-    # lga = 'Katagum'.upper() # 7
-    # lga = 'Birnin-Gwari'.upper() # 8
-    # lga = 'Magama'.upper() # 9
-    # lga = 'Igabi'.upper() # 10
-
-    # lga = 'Bauchi'.upper() # 11 ====== does not have PARA files
-
-    # lga = 'Mangu'.upper() # 12
-    # lga = 'Suleja'.upper() # 13
-    # lga = 'Demsa'.upper() # 14
-    # lga = 'Edati'.upper() # 15
-    # lga = 'Kokona'.upper() # 16
-    # lga = 'Oyun'.upper() # 17
-    # lga = 'Adavi'.upper() # 18
-    # lga = 'Guma'.upper() # 19
-
-
-    index, region = spei_predict(month, lga, year)
+    SPEIA, SPEIM, SPEIJN, SPEIJY, SPEIAG, SPEIS, SPEIO, region = spei_predict(month, lga, year)
+    # index, region = spei_predict(month, lga, year)
 
     if request.method == 'POST':
         data = json.loads(request.body)

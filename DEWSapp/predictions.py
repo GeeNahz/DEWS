@@ -9,44 +9,30 @@ from .extract import ExtractData
 
 # from .ITCZ5 import ExtractDataITCZ5
 
-def predict(state, month, year):
-
-    # auto_populate('DATAitcz10', 'jan', 1988)
-    # function_sst(2021)
-    # function_itcz(2031)
-
+def predict(state, year):
     # ===== SST ===== #
-    oceanTemp = sst_calcs(month, 'PARAsst', year)
-
-    # ===== ITCZ5 ===== #
+    oceanTemp = sst_calcs("jan", 'PARAsst', year)
 
     # ===== ITCZ10 ===== #
-
-    """what to do next:
-    before doing the calculations, check whether the required data for the selected year is available. If it isn't, which is most cases this will be the case, try to automatically generate for data for the previous years up till that selected year. Save this to the excel sheet for future purposes.
-
-    Then if it has already been generated, i.e. it is available, then it should just be fetched and used as is.
-
-    Work on the DATArvitcz10 sheet, those dates are all messed up. Organize it so that the year is on the x-axis and the month is on the y-axis. That should make working with it a whole lot easier.
-
-    Look for this section in ITCZ10 module and do what it says
-    """
-
-
-    itcz10p, nash, litcz10, sumpos10, sumneg10, itczratio, neg10max, pos10max = itcz10_calcs(month, 'PARAitcz10', year)
+    itcz10p, nash, litcz10, sumpos10, sumneg10, itczratio, neg10max, pos10max = itcz10_calcs("jan", 'PARAitcz10', year)
 
     drought_index = main_section(oceanTemp, itcz10p, nash, litcz10, sumpos10, sumneg10, itczratio, neg10max, pos10max, state)
 
     return drought_index, oceanTemp, itcz10p
 
 
-def spei_predict(month, lga, year):
+def spei_predict(lga, year):
     region, synoptic_number = ExtractData(month, 'DEWS_Stations filledNEW').region_synoptic(lga)
 
     doc = f'PARAsynoptic{synoptic_number}'
     dataDoc = f'DATAspeiSynoptic{synoptic_number}'
     rvDoc = f'DATArvSynoptic{synoptic_number}'
 
-    spei_index = spei_calcs(month, dataDoc, doc, year, rvDoc)
+    # spei_index = spei_calcs(month, dataDoc, doc, year, rvDoc)
+    SPEIA, SPEIM, SPEIJN, SPEIJY, SPEIAG, SPEIS, SPEIO = spei_calcs('dec', dataDoc, doc, year, rvDoc)
 
-    return spei_index, region
+    print("SPEIA:", SPEIA)
+    print("SPEIO:", SPEIO)
+
+    # return spei_index, region
+    return SPEIA, SPEIM, SPEIJN, SPEIJY, SPEIAG, SPEIS, SPEIO, region
