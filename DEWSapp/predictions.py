@@ -22,7 +22,7 @@ def predict(state, year):
 
 
 def spei_predict(lga, year):
-    region, synoptic_number = ExtractData(month, 'DEWS_Stations filledNEW').region_synoptic(lga)
+    region, synoptic_number = ExtractData('dec', 'DEWS_Stations filledNEW').region_synoptic(lga)
 
     doc = f'PARAsynoptic{synoptic_number}'
     dataDoc = f'DATAspeiSynoptic{synoptic_number}'
