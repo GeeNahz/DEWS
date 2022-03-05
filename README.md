@@ -8,7 +8,7 @@ Supported request Methods: GET --> returns only an HttpResponse with the text "H
                            
 POST --> returns the Year, Drought index (which is the true prediction), Ocean temperature(SST) and Climate direction(ITCZ).
 
-receives an object with year and month as the keys of the form {year: <year_value>, state: <state_value>}.
+receives an object with year, state and lga (local government area) as the keys of the form {year: <year_value>, state: <state_value>, lga: <lga_value>}.
 
 For accessing the return object, you should use:
 
@@ -19,3 +19,7 @@ For accessing the return object, you should use:
 'ocean_temperature' for Ocean temperature,
 
 'climate_direction' for Climate direction.
+
+'SPEI_april' for Drought index for the month of April. (Do the same for May through October)
+
+'region' for the region of the selected LGA.
