@@ -31,8 +31,8 @@ def spei_predict(lga, year):
     # spei_index = spei_calcs(month, dataDoc, doc, year, rvDoc)
     SPEIA, SPEIM, SPEIJN, SPEIJY, SPEIAG, SPEIS, SPEIO = spei_calcs('dec', dataDoc, doc, year, rvDoc)
 
-    print("SPEIA:", SPEIA)
-    print("SPEIO:", SPEIO)
+    # print("SPEIA:", SPEIA)
+    # print("SPEIO:", SPEIO)
 
     # return spei_index, region
     return SPEIA, SPEIM, SPEIJN, SPEIJY, SPEIAG, SPEIS, SPEIO, region
