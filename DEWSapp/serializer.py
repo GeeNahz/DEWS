@@ -21,6 +21,12 @@ class PredictSerializer(serializers.Serializer):
     region = serializers.CharField(max_length=100)
 
 
+class PredictSerializerRequest(serializers.Serializer):
+    state = serializers.CharField(max_length=255)
+    year = serializers.IntegerField(default=2023)
+    lga = serializers.CharField(max_length=200)
+
+
 class SpeiSerializer(serializers.Serializer):
     year = serializers.IntegerField()
     spei_drought_index = serializers.CharField(max_length=100)
