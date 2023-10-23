@@ -36,7 +36,7 @@ def main_section(oceanT, itcz10p, nash, litcz10, sumpos10, sumneg10, itczratio, 
             drought_index = 'MILD DROUGHT'
             return drought_index
 
-        elif (oceanT == 'VERY WARM' and itcz10p == 'EXTREME SOUTH' and nash >= 0.85 and litcz10 is not 12):
+        elif (oceanT == 'VERY WARM' and itcz10p == 'EXTREME SOUTH' and nash >= 0.85 and litcz10 != 12):
             drought_index = 'NO DROUGHT'
             return drought_index
 
@@ -55,11 +55,11 @@ def main_section(oceanT, itcz10p, nash, litcz10, sumpos10, sumneg10, itczratio, 
             drought_index = 'MILD DROUGHT'
             return drought_index
 
-        elif (oceanT == 'AVERAGE' and itcz10p == 'EXTREME SOUTH' and litcz10 is not 12):
+        elif (oceanT == 'AVERAGE' and itcz10p == 'EXTREME SOUTH' and litcz10 != 12):
             drought_index = 'NO DROUGHT'
             return drought_index
 
-        elif (oceanT == 'AVERAGE') and (itcz10p == 'NORMAL') and (litcz10 is not 12):
+        elif (oceanT == 'AVERAGE') and (itcz10p == 'NORMAL') and (litcz10 != 12):
             drought_index = 'NO DROUGHT'
             return drought_index
 
@@ -123,7 +123,7 @@ def main_section(oceanT, itcz10p, nash, litcz10, sumpos10, sumneg10, itczratio, 
             drought_index = 'MILD DROUGHT'
             return drought_index
 
-        elif (oceanT == 'WARM' and itcz10p == 'EXTREME SOUTH' and itczratio < 1 and litcz10 is not 12):
+        elif (oceanT == 'WARM' and itcz10p == 'EXTREME SOUTH' and itczratio < 1 and litcz10 != 12):
             drought_index = 'MODERATE DROUGHT'
             return drought_index
 
@@ -138,7 +138,7 @@ def main_section(oceanT, itcz10p, nash, litcz10, sumpos10, sumneg10, itczratio, 
             drought_index = 'MODERATE DROUGHT'
             return drought_index
 
-        elif (oceanT == 'AVERAGE' and itcz10p == 'EXTREME SOUTH' and litcz10 is not 12):
+        elif (oceanT == 'AVERAGE' and itcz10p == 'EXTREME SOUTH' and litcz10 != 12):
             drought_index = 'NO DROUGHT'
             return drought_index
 
