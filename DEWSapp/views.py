@@ -38,7 +38,7 @@ class PredictGenericAPIView(GenericAPIView):
     serializer_class = PredictSerializerRequest
     permission_classes = [permissions.AllowAny]
     
-    def get(self):
+    def get(self, request):
         """
         Test endpoint with default hard-coded values. It only provides the response based on those default values.
         """
@@ -61,7 +61,7 @@ class PredictGenericAPIView(GenericAPIView):
 
         results = PredictDetails(year, drought_index, oceanTemp, climate_direction, SPEIA, SPEIM, SPEIJN, SPEIJY, SPEIAG, SPEIS, SPEIO, region)
 
-        serializer = self.serializer_class(results, many=True)
+        serializer = PredictSerializer(results)
 
         return Response(serializer.data)
 
