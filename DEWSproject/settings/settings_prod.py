@@ -7,4 +7,6 @@ DEBUG = env("DEBUG")
 # ALLOWED_HOSTS = ['http://dewsapp.herokuapp.com', 'https://dewsapp.herokuapp.com', '127.0.0.1']
 ALLOWED_HOSTS = ["*"]
 
+STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
+
 django_heroku.settings(locals())

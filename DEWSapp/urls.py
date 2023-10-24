@@ -10,5 +10,5 @@ urlpatterns = [
     # path('spei/', csrf_exempt(views.speiView), name='spei-view'),
 
     # path("predict", views.PredictAPIView.as_view(), name="predict"),
-    path("predict", views.PredictGenericAPIView.as_view(), name="predict-drought"),
+    path("predict/", views.PredictGenericAPIView.as_view(), name="predict-drought"),
 ]
