@@ -23,7 +23,7 @@ environ.Env.read_env(env_file=os.path.join(BASE_DIR, '.env'))
 
 MY_APPS = [
     'DEWSapp.apps.DewsappConfig',
-    
+
     'apps.users.apps.UsersConfig',
     'apps.dewsDC.apps.DewsdcConfig',
 ]
@@ -33,6 +33,8 @@ THIRD_PARTY_APPS = [
     'corsheaders',
     'drf_spectacular',
     'drf_spectacular_sidecar',
+
+    'django_extensions',
 ]
 
 INSTALLED_APPS = [
