@@ -1,4 +1,8 @@
 from django.urls import path
 
+from .views import DataCollection
 
-urlpatterns = []
+
+urlpatterns = [
+    path('', DataCollection.as_view()),
+]
