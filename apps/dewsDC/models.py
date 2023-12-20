@@ -14,3 +14,10 @@ class Precipitation(DefaultModelFields, models.Model):
 
     def __str__(self):
         return f'Precipitation: {self.precipitation}'
+
+
+class SoilMoisture(DefaultModelFields, models.Model):
+    soil_moisture = models.FloatField(db_index=True)
+
+    def __str__(self):
+        return f'SoilMoisture: {self.soil_moisture}'
