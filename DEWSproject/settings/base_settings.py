@@ -23,6 +23,9 @@ environ.Env.read_env(env_file=os.path.join(BASE_DIR, '.env'))
 
 MY_APPS = [
     'DEWSapp.apps.DewsappConfig',
+
+    'apps.users.apps.UsersConfig',
+    'apps.dewsDC.apps.DewsdcConfig',
 ]
 
 THIRD_PARTY_APPS = [
@@ -30,6 +33,8 @@ THIRD_PARTY_APPS = [
     'corsheaders',
     'drf_spectacular',
     'drf_spectacular_sidecar',
+
+    'django_extensions',
 ]
 
 INSTALLED_APPS = [
@@ -175,3 +180,5 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'static/images')
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+AUTH_USER_MODEL = 'users.User'
