@@ -182,3 +182,6 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'static/images')
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 AUTH_USER_MODEL = 'users.User'
+
+MODEL_FILENAME = 'spei-arima-model.pkl'
+MODEL_FILE_PATH = BASE_DIR / 'model' / MODEL_FILENAME
