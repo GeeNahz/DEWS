@@ -1,25 +1,14 @@
 # DEWS
-A Drought Early Warning System for northern Nigeria
+A Drought Early Warning System (DEWS) for northern Nigeria
 
-The endpoint is: https://dewsapp.herokuapp.com/dews/pred/
+> The project is a backend API service for predicting drought.
+> It consists of two parts:
 
+1. Sensor Data Collection
+2. Drought Prediction using ARIMA model
 
-Supported request Methods: GET --> returns only an HttpResponse with the text "Home page?". Don't laugh please...
-                           
-POST --> returns the Year, Drought index (which is the true prediction), Ocean temperature(SST) and Climate direction(ITCZ).
+Sensor readings are taken from a data collection unit and POSTed to this server. They are stored and computations are carried out using these readings to predict drought.
 
-receives an object with year, state and lga (local government area) as the keys of the form {year: <year_value>, state: <state_value>, lga: <lga_value>}.
+For the prediction, an ARIMA model, a time series model, was trained using historical dataset and used to predict drought.
 
-For accessing the return object, you should use:
-
-'year' for Year,
-
-'drought_index' for Drought index,
-
-'ocean_temperature' for Ocean temperature,
-
-'climate_direction' for Climate direction.
-
-'SPEI_april' for Drought index for the month of April. (Do the same for May through October)
-
-'region' for the region of the selected LGA.
+The dataset is a Standard Precipitation Evapotranspiration Index (SPEI) data and this, along with some threshold are used to determine the occurence of drought.
