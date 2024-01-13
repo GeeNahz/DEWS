@@ -15,7 +15,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/v1/dews/', include('DEWSapp.urls')),
     
-    path('api/v1/data-collection/', include('apps.dewsDC.urls')),
+    path('api/v1/', include('apps.dewsDC.urls')),
 ]
 
 urlpatterns += schema_urlpatterns

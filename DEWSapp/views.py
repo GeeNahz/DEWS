@@ -14,6 +14,7 @@ from .utils.openapi_response import response_schema
 from .serializer import (
     PredictSerializer,
     PredictSerializerRequest,
+    PredictionModelSerializerRequest,
     SpeiSerializer,
     TextSerializer,
 )
@@ -25,6 +26,7 @@ from .dataset import (
 # import json
 
 from .predictions import predict, spei_predict
+from .model_prediction import ModelPrediction
 
 # Create your views here.
 
@@ -87,6 +89,21 @@ class PredictGenericAPIView(GenericAPIView):
         serializer = PredictSerializer(results)
 
         return Response(serializer.data, status=status.HTTP_200_OK)
+
+
+class PredictModelAPIView(APIView):
+    serializer_class = PredictionModelSerializerRequest
+
+    def post(self, request, format=None):
+        serializer = self.serializer_class(data=request.data)
+        serializer.is_valid(raise_exception=True)
+
+        year = serializer.data["year"]
+        month = serializer.data["month"]
+
+        ModelPrediction.predict(month, year)
+
+        return Response(status=status.HTTP_200_OK)
 
 
 @ensure_csrf_cookie
