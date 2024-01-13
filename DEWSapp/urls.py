@@ -11,4 +11,5 @@ urlpatterns = [
 
     # path("predict", views.PredictAPIView.as_view(), name="predict"),
     path("predict/", views.PredictGenericAPIView.as_view(), name="predict-drought"),
+    path("model/predict/", views.PredictModelAPIView.as_view()),
 ]
