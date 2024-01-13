@@ -11,6 +11,7 @@ class SensorData(DefaultModelFields, models.Model):
 
     class Meta:
         ordering = ['-created']
+        verbose_name_plural = "Sensor Data"
     
     def __str__(self):
         return f'Temp: {self.temperature}; Hum: {self.humidity}; Prec: {self.precipitation}; moist: {self.soil_moisture}'
