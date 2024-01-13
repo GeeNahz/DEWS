@@ -27,6 +27,11 @@ class PredictSerializerRequest(serializers.Serializer):
     lga = serializers.CharField(max_length=200)
 
 
+class PredictionModelSerializerRequest(serializers.Serializer):
+    # month = serializers.CharField(max_length=50)
+    month = serializers.IntegerField()
+    year = serializers.IntegerField()
+
 class SpeiSerializer(serializers.Serializer):
     year = serializers.IntegerField()
     spei_drought_index = serializers.CharField(max_length=100)
