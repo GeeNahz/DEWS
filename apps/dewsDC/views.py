@@ -30,7 +30,7 @@ class SensorDataAPIView(APIView):
         return Response(data=serializer.data, status=status.HTTP_200_OK)
 
     def get(self, request, format=None):
-        sensor_data = SensorData.objects.all()
+        sensor_data = SensorData.objects.all()[:20]
         serializer = SensorDataSerializerOut(sensor_data, many=True)
         
         return Response(data=serializer.data, status=status.HTTP_200_OK)
