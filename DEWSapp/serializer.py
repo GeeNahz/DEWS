@@ -28,9 +28,16 @@ class PredictSerializerRequest(serializers.Serializer):
 
 
 class PredictionModelSerializerRequest(serializers.Serializer):
-    # month = serializers.CharField(max_length=50)
     month = serializers.IntegerField()
     year = serializers.IntegerField()
+
+
+class PredictionModelSerializerResponse(serializers.Serializer):
+    month = serializers.IntegerField()
+    year = serializers.IntegerField()
+    spei = serializers.FloatField()
+    drought_index = serializers.CharField()
+
 
 class SpeiSerializer(serializers.Serializer):
     year = serializers.IntegerField()
