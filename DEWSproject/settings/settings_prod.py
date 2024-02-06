@@ -22,4 +22,4 @@ DATABASES = {
 
 django_heroku.settings(locals())
 
-STATICFILES_STORAGE = "whitenoise.django.CompressedManifestStaticFilesStorage"
+STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
