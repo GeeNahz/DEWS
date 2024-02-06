@@ -72,7 +72,7 @@ SPECTACULAR_SETTINGS = {
     'TITLE': 'DEWS App',
     'DESCRIPTION': 'DEWS App is an early warning system for states in Northern Nigeria',
     'VERSION': '1.0.0',
-    'SERVE_INCLUDE_SCHEMA': False,
+    'SERVE_INCLUDE_SCHEMA': True,
     'SWAGGER_UI_DIST': 'SIDECAR',
     'SWAGGER_UI_FAVICON_HREF': 'SIDECAR',
     'REDOC_DIST': 'SIDECAR',
@@ -91,8 +91,7 @@ CORS_ALLOW_METHODS = [
 ]
 
 CSRF_TRUSTED_ORIGINS = [
-    "https://dewsapp.herokuapp.com",
-    "http://dewsapp.herokuapp.com",
+    "https://dewsapp.onrender.com",
 ]
 
 ROOT_URLCONF = 'DEWSproject.urls'
